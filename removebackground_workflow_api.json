@@ -1,0 +1,361 @@
+{
+  "52": {
+    "inputs": {
+      "model": "RMBG-2.0",
+      "sensitivity": 1,
+      "process_res": 1024,
+      "mask_blur": 0,
+      "mask_offset": 0,
+      "invert_output": false,
+      "refine_foreground": false,
+      "background": "Alpha",
+      "background_color": "#ffffff",
+      "image": [
+        "54",
+        0
+      ]
+    },
+    "class_type": "RMBG",
+    "_meta": {
+      "title": "去除背景 (RMBG)"
+    }
+  },
+  "54": {
+    "inputs": {
+      "mode": "incremental_image",
+      "seed": 26114433535204,
+      "index": 0,
+      "label": "Batch 001",
+      "path": "E:\\ComfyUI\\ComfyUI-aki-v2\\ComfyUI\\input\\work\\products\\6946183300640",
+      "pattern": "*",
+      "allow_RGBA_output": "false",
+      "filename_text_extension": "true"
+    },
+    "class_type": "Load Image Batch",
+    "_meta": {
+      "title": "Load Image Batch"
+    }
+  },
+  "55": {
+    "inputs": {
+      "output_path": "E:\\ComfyUI\\ComfyUI-aki-v2\\ComfyUI\\input\\work\\output\\111",
+      "filename_prefix": "",
+      "filename_delimiter": "_",
+      "filename_number_padding": 4,
+      "filename_number_start": "false",
+      "extension": "jpg",
+      "dpi": 300,
+      "quality": 100,
+      "optimize_image": "true",
+      "lossless_webp": "false",
+      "overwrite_mode": "false",
+      "show_history": "false",
+      "show_history_by_prefix": "true",
+      "embed_workflow": "true",
+      "show_previews": "true",
+      "images": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "Image Save",
+    "_meta": {
+      "title": "Image Save"
+    }
+  },
+  "57": {
+    "inputs": {
+      "image": [
+        "81",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "58": {
+    "inputs": {
+      "expression": "2700/max(a,b)",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "a": [
+        "57",
+        0
+      ],
+      "b": [
+        "57",
+        1
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "Math Expression 🐍"
+    }
+  },
+  "59": {
+    "inputs": {
+      "expression": "max(1,floor(a*b))",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "a": [
+        "57",
+        0
+      ],
+      "b": [
+        "58",
+        1
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "new_width"
+    }
+  },
+  "60": {
+    "inputs": {
+      "expression": "a*b",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "a": [
+        "57",
+        1
+      ],
+      "b": [
+        "58",
+        1
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "new_height"
+    }
+  },
+  "61": {
+    "inputs": {
+      "width": [
+        "75",
+        0
+      ],
+      "height": [
+        "75",
+        0
+      ],
+      "batch_size": 1,
+      "color": 16777215
+    },
+    "class_type": "EmptyImage",
+    "_meta": {
+      "title": "空图像"
+    }
+  },
+  "63": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "width": [
+        "59",
+        0
+      ],
+      "height": [
+        "60",
+        0
+      ],
+      "crop": "disabled",
+      "image": [
+        "81",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "缩放图像"
+    }
+  },
+  "64": {
+    "inputs": {
+      "x": [
+        "65",
+        0
+      ],
+      "y": [
+        "66",
+        0
+      ],
+      "resize_source": false,
+      "destination": [
+        "61",
+        0
+      ],
+      "source": [
+        "63",
+        0
+      ],
+      "mask": [
+        "85",
+        0
+      ]
+    },
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "合成图像（遮罩）"
+    }
+  },
+  "65": {
+    "inputs": {
+      "expression": "(b-a)/2",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "a": [
+        "59",
+        0
+      ],
+      "b": [
+        "75",
+        0
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "x"
+    }
+  },
+  "66": {
+    "inputs": {
+      "expression": "(b-a)/2",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "a": [
+        "60",
+        0
+      ],
+      "b": [
+        "75",
+        0
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "y"
+    }
+  },
+  "67": {
+    "inputs": {
+      "images": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "预览图像"
+    }
+  },
+  "75": {
+    "inputs": {
+      "expression": "a*1.0526",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
+      "a": [
+        "60",
+        0
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "empty_image_width"
+    }
+  },
+  "77": {
+    "inputs": {
+      "channel": "alpha",
+      "image": [
+        "52",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "图像转换为遮罩"
+    }
+  },
+  "80": {
+    "inputs": {
+      "padding": 0,
+      "region_type": "dominant",
+      "mask": [
+        "77",
+        0
+      ]
+    },
+    "class_type": "Mask Crop Region",
+    "_meta": {
+      "title": "Mask Crop Region"
+    }
+  },
+  "81": {
+    "inputs": {
+      "top": [
+        "80",
+        2
+      ],
+      "left": [
+        "80",
+        3
+      ],
+      "right": [
+        "80",
+        4
+      ],
+      "bottom": [
+        "80",
+        5
+      ],
+      "image": [
+        "52",
+        0
+      ]
+    },
+    "class_type": "Image Crop Location",
+    "_meta": {
+      "title": "Image Crop Location"
+    }
+  },
+  "85": {
+    "inputs": {
+      "channel": "alpha",
+      "image": [
+        "63",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "图像转换为遮罩"
+    }
+  }
+}
